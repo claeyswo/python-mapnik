@@ -27,6 +27,7 @@
 #include <mapnik/warning_ignore.hpp>
 #include <boost/python.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>
+#include <boost/optional.hpp>
 #pragma GCC diagnostic pop
 
 // mapnik
@@ -121,7 +122,7 @@ void set_buffer_size(mapnik::layer & l, boost::optional<int> const& buffer_size)
 
 PyObject * get_buffer_size(mapnik::layer & l)
 {
-    boost::optional<int> buffer_size = l.buffer_size();
+    std::optional<int> buffer_size = l.buffer_size();
     if (buffer_size)
     {
 #if PY_VERSION_HEX >= 0x03000000
